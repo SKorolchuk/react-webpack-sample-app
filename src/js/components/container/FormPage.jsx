@@ -27,6 +27,9 @@ class FormPage extends Component {
         value={title}
         handleChange={this.handleChange}
       />
+      {
+        Object.keys(this.state).map(key => (<div>{key}</div>))
+      }
     </form>);
   }
 }

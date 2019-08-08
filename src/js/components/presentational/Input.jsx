@@ -5,12 +5,12 @@ const Input = ({ label, text, type, id, value, handleChange }) => {
   return (
     <div className="form-group">
       <label htmlFor={label}>{text}</label>
-      <input type={type} className="form-control" id={id} value={value} handleChange={handleChange} required />
+      <input type={type} className="form-control" id={id} value={value} onChange={handleChange} required />
     </div>
   );
 }
 
-Input.PropTypes = {
+Input.propTypes = {
   label: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,

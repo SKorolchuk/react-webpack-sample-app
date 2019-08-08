@@ -4,9 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "prettier": "prettier",
     "svgr": "svgr -d src/Icons/ assets/",
-    "build": "npm run svgr && webpack --mode production",
-    "start": "webpack-dev-server --open --mode development"
+    "build": "npm run svgr && webpack --config webpack.config.js --env.env=production",
+    "start": "npm run svgr && webpack-dev-server --open --config webpack.config.js --env.env=development",
+    "build:analyze": "npm run build -- --env.addon=bundleanalyze --env.addon=bundlevisualizer",
+    "test": "echo \"Error: no test specified\" && exit 0"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +19,7 @@
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
     "@svgr/cli": "^4.3.2",
+    "@svgr/webpack": "^4.3.2",
     "autoprefixer": "^9.6.1",
     "babel-eslint": "^10.0.2",
     "babel-loader": "^8.0.6",
@@ -27,7 +31,10 @@
     "eslint-config-airbnb": "^17.1.1",
     "eslint-config-prettier": "^6.0.0",
     "eslint-loader": "^2.2.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.3",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.12.0",
@@ -38,10 +45,14 @@
     "react-hot-loader": "^4.12.10",
     "sass-loader": "^7.1.0",
     "style-loader": "^1.0.0",
+    "underscore-template-loader": "^1.0.0",
+    "url-loader": "^2.1.0",
     "webpack": "^4.39.1",
+    "webpack-bundle-analyzer": "^3.4.1",
     "webpack-cli": "^3.3.6",
     "webpack-dev-server": "^3.7.2",
-    "webpack-merge": "^4.2.1"
+    "webpack-merge": "^4.2.1",
+    "webpack-visualizer-plugin": "^0.1.11"
   },
   "dependencies": {
     "react": "^16.8.6",
