@@ -6,8 +6,8 @@
   "scripts": {
     "prettier": "prettier",
     "svgr": "svgr -d src/Icons/ assets/",
-    "build": "npm run svgr && webpack --config webpack.config.js --env.env=production",
-    "start": "npm run svgr && webpack-dev-server --open --config webpack.config.js --env.env=development",
+    "build": "webpack --config webpack.config.js --env.env=production",
+    "start": "webpack-dev-server --open --inline --config webpack.config.js --env.env=development",
     "build:analyze": "npm run build -- --env.addon=bundleanalyze --env.addon=bundlevisualizer",
     "test": "echo \"Error: no test specified\" && exit 0"
   },
@@ -55,7 +55,14 @@
     "webpack-visualizer-plugin": "^0.1.11"
   },
   "dependencies": {
+    "i18next": "^17.0.10",
+    "i18next-browser-languagedetector": "^3.0.3",
+    "i18next-xhr-backend": "^3.1.1",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-i18next": "^10.11.5",
+    "react-redux": "^7.1.0",
+    "react-router-dom": "^5.0.1",
+    "redux": "^4.0.4"
   }
 }

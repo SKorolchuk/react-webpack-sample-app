@@ -1,5 +1,4 @@
 /* eslint-disable global-require */
-/* eslint-disable import/no-extraneous-dependencies */
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const path = require('path');
@@ -24,6 +23,7 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, '..', 'dist'),
     hot: true,
+    historyApiFallback: true,
   },
   resolve: {
     extensions: ['*', '.js', '.jsx', '.scss'],

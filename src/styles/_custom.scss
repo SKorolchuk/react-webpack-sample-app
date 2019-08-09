@@ -1,9 +1,8 @@
-$body-bg: rgb(222, 233, 204);
+$body-bg: rgb(43, 47, 58);
 $body-color: #111;
 
-$theme-colors: (
-  "primary": #0074d9,
-  "danger": #ff4136
-);
+$theme-colors: ("primary": #817e69,
+  "danger": #ff4136,
+  "dark": #271c1c);
 
 @import "~bootstrap/scss/bootstrap";

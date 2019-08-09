@@ -1,11 +1,12 @@
-/* eslint-disable import/prefer-default-export */
-/* eslint-disable import/no-extraneous-dependencies */
-import { BundleAnalyzerPlugin as WebpackBundleAnalyzer } from 'webpack-bundle-analyzer';
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin;
 
-export const plugins = [
-  new WebpackBundleAnalyzer({
-    analyzerMode: 'static',
-    reportFilename: './report.html',
-    openAnalyzer: false,
-  }),
-];
+module.exports = {
+  plugins: [
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+      reportFilename: './report.html',
+      openAnalyzer: false,
+    }),
+  ],
+};
