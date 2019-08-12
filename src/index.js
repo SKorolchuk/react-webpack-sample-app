@@ -4,11 +4,12 @@ import App from './js/components/App.jsx';
 import { initTranslation } from './js/translate.js';
 import { Provider } from 'react-redux';
 import rootReducer from './js/reducers';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
 initTranslation();
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
   React.createElement(

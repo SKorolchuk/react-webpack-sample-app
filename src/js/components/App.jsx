@@ -1,13 +1,12 @@
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import AboutPage from './pages/AboutPage';
-import LoginPage from './pages/LoginPage';
+import { BrowserRouter } from 'react-router-dom';
 import React, { Component } from 'react';
 import i18n from 'i18next';
 import '../../styles/main.scss';
 import { Navbar } from './controls/Navbar';
 import { connect } from 'react-redux';
 import { logoff } from '../actions/session.actions';
+import routes from './routes';
+import PageRouter from './controls/PageRouter';
 
 export class App extends Component {
   constructor(props) {
@@ -28,14 +27,12 @@ export class App extends Component {
             label: i18n.t('Sign Off'),
             action: onLogout,
           },
-      {
-        to: '/',
-        label: i18n.t('Home'),
-      },
-      {
-        to: '/about',
-        label: i18n.t('About'),
-      },
+      ...routes
+        .filter((r, i) => i > 0)
+        .map((route, i) => ({
+          to: `/${route.path}`,
+          label: route.name(),
+        })),
     ];
     return (
       <React.Fragment>
@@ -45,28 +42,15 @@ export class App extends Component {
           email={email}
         />
         <BrowserRouter>
-          <Switch>
-            <Route key="home" exact path="/" component={HomePage} />
-            <Route
-              key="login"
-              exact
-              path="/login"
-              component={LoginPage}
-            />
-            <Route
-              key="about"
-              exact
-              path="/about"
-              component={AboutPage}
-            />
-          </Switch>
+          <PageRouter routes={routes} />
         </BrowserRouter>
       </React.Fragment>
     );
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, ownProps) => ({
+  ...ownProps,
   ...state.session,
 });
 
